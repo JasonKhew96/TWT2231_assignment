@@ -6,7 +6,11 @@
   </head>
   <body>
     <?php
-      if (isset($_GET['error'])) echo '<p>' . $_GET['error'] . '</p>'
+      if (isset($_GET['error'])) {
+        echo '<p>' . $_GET['error'] . '</p>';
+      } elseif (isset($_COOKIE['session_id'])) {
+        header('Location: index.php');
+      }
     ?>
     <form action="actionlogin.php" method="POST">
       Username:<br/>
