@@ -3,7 +3,7 @@
 
   if (isset($_COOKIE['session_id'])) {
     $guid = mysqli_real_escape_string($db,$_COOKIE["session_id"]);
-    // echo $_COOKIE["session_id"];
+
     $queryadmin = "SELECT acc_id FROM account WHERE guid = '$guid'";
     $querystaff = "SELECT staff_id FROM staff WHERE guid = '$guid'";
 
@@ -17,8 +17,8 @@
     } elseif (mysqli_num_rows($resultstaff)) {
       $isadmin = 0;
     }
-
+    $islogin = true;
   } else {
-    header('Location: login.php');
+    $islogin = false;
   }
  ?>

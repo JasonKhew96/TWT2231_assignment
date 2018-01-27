@@ -17,9 +17,9 @@
     $mypassword = mysqli_real_escape_string($db,$password);
 
     $query = '';
-    if ($logintype == 'Admin Login') {
+    if ($logintype == 'admin') {
       $query = "SELECT acc_id, MD5(UNIX_TIMESTAMP() + acc_id + RAND(UNIX_TIMESTAMP())) FROM account WHERE username = '$myusername' and password = password('$mypassword')";
-    } elseif ($logintype == 'Staff Login') {
+    } elseif ($logintype == 'staff') {
       $query = "SELECT staff_id, MD5(UNIX_TIMESTAMP() + staff_id + RAND(UNIX_TIMESTAMP())) FROM staff WHERE username = '$myusername' and password = password('$mypassword')";
     } else {
       header('Location: login.php?refer=' . urlencode($refer) . '&error=' . urlencode('Unknown error.'));
