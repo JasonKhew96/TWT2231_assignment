@@ -8,7 +8,7 @@
     <?php
       require_once 'session.php';
       if ($isadmin == 0){
-        header('Location: index.php');
+        header('Location: index.html');
         exit();
       } elseif ($isadmin == 1) {
         require_once "config.php";

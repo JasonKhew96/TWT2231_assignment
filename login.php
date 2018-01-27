@@ -9,7 +9,7 @@
       if (isset($_GET['error'])) {
         echo '<p>' . $_GET['error'] . '</p>';
       } elseif (isset($_COOKIE['session_id'])) {
-        header('Location: index.php');
+        header('Location: index.html');
       }
     ?>
     <form action="actionlogin.php" method="POST">
@@ -21,7 +21,7 @@
       <br/>
       <input type="submit" name="type" value="Staff Login">
       <input type="submit" name="type" value="Admin Login">
-      <input type="hidden" name="refer" value="<?php echo (isset($_GET['refer'])) ? $_GET['refer'] : 'index.php'; ?>">
+      <input type="hidden" name="refer" value="<?php echo (isset($_GET['refer'])) ? $_GET['refer'] : 'index.html'; ?>">
     </form>
   </body>
 </html>
