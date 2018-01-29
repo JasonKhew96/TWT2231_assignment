@@ -31,9 +31,9 @@
     if ( mysqli_num_rows($result) ) {
         $row = mysqli_fetch_row($result);
         // Update the user record
-        if ($logintype == 'Admin Login') {
+        if ($logintype == 'admin') {
           $query = "UPDATE account SET guid = '$row[1]' WHERE acc_id = $row[0]";
-        } elseif ($logintype == 'Staff Login') {
+        } elseif ($logintype == 'staff') {
           $query = "UPDATE staff SET guid = '$row[1]' WHERE staff_id = $row[0]";
         }
 
