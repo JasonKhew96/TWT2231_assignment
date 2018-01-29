@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="container">
     <?php include('header.php'); ?>
     <!-- Navigation bar -->
     <ul class="nav nav-tabs justify-content-center">
@@ -52,6 +53,7 @@
     </div>
 
     <?php include('footer.php'); ?>
+    </div>
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
