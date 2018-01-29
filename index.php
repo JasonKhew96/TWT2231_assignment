@@ -11,17 +11,25 @@
 <body>
   <div class="container">
   <?php include('header.php'); ?>
+
   <!-- Navigation bar -->
   <ul class="nav nav-tabs justify-content-center">
     <li class="nav-item">
       <a class="nav-link active" href="./index.php">Home</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
+    <?php
+    require_once 'session.php';
+
+    if ($isadmin != -1) {
+      echo '<li class="nav-item">';
+      if ($isadmin == 1) {
+        echo '<a class="nav-link" href="stafflist.php">Staff List</a>';
+      } elseif ($isadmin == 0) {
+        echo '<a class="nav-link" href="staff.php">Profile</a>';
+      }
+      echo '</li>';
+    }
+    ?>
     <li class="nav-item">
       <?php
       require_once 'session.php';
