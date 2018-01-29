@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Staff List</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <title>Staff List - Tindustries</title>
   </head>
   <body>
-    <?php
-      require_once 'session.php';
-      if ($isadmin == 0){
-        header('Location: index.php');
-        exit();
-      } elseif ($isadmin == 1) {
-        require_once "config.php";
+    <div class="container">
+    <?php include('header.php'); ?>
 
-        $query = "SELECT staff_id, first_name, last_name, is_active FROM staff";
-        $result = mysqli_query($db, $query) or die('SQL Query error.');
-
-        if (mysqli_num_rows($result) > 0) {
-          echo "<table>";
-            echo "<tr>";
-              echo "<th>ID</th>";
-              echo "<th>Name</th>";
-              echo "<th>Active</th>";
-            echo "</tr>";
-          // output data of each row
-          while ($row = mysqli_fetch_array($result)) {
-            echo "<tr>";
-              echo "<td>".$row["staff_id"]."</td>";
-              echo "<td>".$row["first_name"]." ".$row["last_name"]."</td>";
-              echo "<td>".$row["is_active"]."</td>";
-            echo "</tr>";
-          }
-          echo "</table>";
+    <!-- Navigation bar -->
+    <ul class="nav nav-tabs justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" href="./index.php">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="./stafflist.php">Staff List</a>
+      </li>
+      <li class="nav-item">
+        <?php
+        require_once 'session.php';
+        if ($islogin) {
+            echo '<a class="nav-link" href="./logout.php">Logout</a>';
         } else {
-          echo "0 results";
+            echo '<a class="nav-link" href="./login.php">Login</a>';
         }
-      }
-    ?>
+        ?>
+      </li>
+    </ul>
+
+    <div id="ajaxtable"></div>
+
+    <?php include('footer.php'); ?>
+    </div>
+
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
