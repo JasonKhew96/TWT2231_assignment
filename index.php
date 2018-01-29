@@ -15,7 +15,7 @@
   <!-- Navigation bar -->
   <ul class="nav nav-tabs justify-content-center">
     <li class="nav-item">
-      <a class="nav-link active" href="./index.php">Home</a>
+      <a class="nav-link active" href="index.php">Home</a>
     </li>
     <?php
     require_once 'session.php';
