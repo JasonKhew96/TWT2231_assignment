@@ -29,8 +29,22 @@
         ?>
       </li>
     </ul>
-
-    <div id="ajaxtable"></div>
+        <div class="input-group">
+          <div class="input-group-btn search-panel">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Filter By
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#staffId">Staff ID</a>
+              <a class="dropdown-item" href="#name">Name</a>
+              <a class="dropdown-item" href="#isActive">Is active</a>
+            </div>
+          </div>
+          <input type="hidden" name="search_param" value="all" id="search_param">
+          <input type="text" class="form-control" name="x" placeholder="Search term...">
+          <button type="button" class="btn btn-primary">Search</button>
+        </div>
+        <div id="ajaxtable"></div>
 
     <?php include('footer.php'); ?>
     </div>

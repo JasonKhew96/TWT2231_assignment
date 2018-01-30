@@ -1,3 +1,15 @@
+function reloadAjaxTable(response) {
+  // console.log(response);
+  $(".clickable-row").click(function() {
+      // console.log(response);
+      // window.history.pushState({ response: response }, "", "stafflist.php?id=" + $(this).attr("data"));
+      // alert($(this).attr("data"));
+      // console.log($(this).attr("data"));
+      document.getElementById("ajaxtable").innerHTML = '';
+      // window.location = $(this).data("data");
+  });
+}
+
 function createStaffListTable(obj) {
   var tbl = document.createElement('table');
   tbl.classList.add('table');
@@ -25,6 +37,8 @@ function createStaffListTable(obj) {
   var tbdy = document.createElement('tbody');
   for (var i = 0; i < obj.length; i++) {
     var tr = document.createElement('tr');
+    $(tr).attr('class', 'clickable-row');
+    $(tr).attr('data', obj[i].staff_id);
 
     var td1 = document.createElement('td');
     td1.innerHTML = obj[i].staff_id;
@@ -51,12 +65,20 @@ function getStaffList() {
     if (this.readyState == 4 && this.status == 200) {
       var myObj = JSON.parse(this.responseText);
       document.getElementById("ajaxtable").innerHTML = createStaffListTable(myObj.data);
+      reloadAjaxTable(this.responseText);
     }
   };
   xmlhttp.open("GET", "actionstafflist.php", true);
   xmlhttp.send();
 }
 
-$(document).ready(function() {
+$(document).ready(function(e) {
   getStaffList();
+  $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel #dropdownMenuButton').text(concept);
+		$('.input-group #search_param').val(param);
+	});
 });
