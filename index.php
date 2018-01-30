@@ -20,23 +20,26 @@
     <?php
     require_once 'session.php';
 
-    if ($isadmin != -1) {
-      echo '<li class="nav-item">';
       if ($isadmin == 1) {
-        echo '<a class="nav-link" href="stafflist.php">Staff List</a>';
+          echo '<li class="nav-item">';
+          echo '<a class="nav-link" href="stafflist.php">Staff List</a>';
+          echo '</li>';
       } elseif ($isadmin == 0) {
-        echo '<a class="nav-link" href="staff.php">Profile</a>';
+          echo '<li class="nav-item">';
+          echo '<a class="nav-link" href="profile.php">Profile</a>';
+          echo '</li>';
+          echo '<li class="nav-item">';
+          echo '<a class="nav-link" href="payroll.php">Payroll</a>';
+          echo '</li>';
       }
-      echo '</li>';
-    }
     ?>
     <li class="nav-item">
       <?php
       require_once 'session.php';
       if ($islogin) {
-        echo '<a class="nav-link" href="logout.php">Logout</a>';
+          echo '<a class="nav-link" href="logout.php">Logout</a>';
       } else {
-        echo '<a class="nav-link" href="login.php">Login</a>';
+          echo '<a class="nav-link" href="login.php">Login</a>';
       }
       ?>
     </li>
